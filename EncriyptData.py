@@ -13,7 +13,7 @@ class EncryptData:
         self.key = Fernet.generate_key()
 
     def start(self):
-        self.__saveKey(self.key)
+        self._saveKey(self.key)
 
         self.dataFile.close()
 
@@ -23,7 +23,7 @@ class EncryptData:
     def decrypt(self):
         pass
 
-    def __saveKey(self, key):
+    def _saveKey(self, key):
         sub = ET.SubElement(self.root, 'Key')
         count = self.root[0].text
         x = int(count)
