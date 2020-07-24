@@ -1,9 +1,10 @@
+from EncriyptData import *
 from WindowControl import *
 from tkinter import *
-import xml.etree.ElementTree as ET
 
 
 def main():
+    encrypt = EncryptData()
     root = WindowControl.createWindow(250, 200)
     WindowControl.putObjectsOnTheWindow(root)
     root.mainloop()
