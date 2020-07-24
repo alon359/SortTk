@@ -1,8 +1,6 @@
-from EncriyptData import *
 from WindowControl import *
 from tkinter import *
 from Md5Control import *
-
 
 
 def main():
