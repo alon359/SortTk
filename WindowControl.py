@@ -11,21 +11,22 @@ class WindowControl:
         self.entryUser = None
         self.entryPass = None
         self.btnEnter = None
+        self.root = None
 
         pass
 
     def createWindow(self, w, h):
-        root = Tk()
-        root.title('Sorting')
+        self.root = Tk()
+        self.root.title('Sorting')
         rootWidth = w
         rootHeight = h
-        ws = root.winfo_screenwidth()
-        hs = root.winfo_screenheight()
+        ws = self.root.winfo_screenwidth()
+        hs = self.root.winfo_screenheight()
         xCoordinate = (ws / 2) - (rootWidth / 2)
         yCoordinate = (hs / 2) - (rootHeight / 2)
-        root.geometry('%dx%d+%d+%d' % (rootWidth, rootHeight, xCoordinate, yCoordinate))
-        self._putObjectsOnTheWindow(root)
-        return root
+        self.root.geometry('%dx%d+%d+%d' % (rootWidth, rootHeight, xCoordinate, yCoordinate))
+        self._putObjectsOnTheWindow(self.root)
+        return self.root
 
     def _putObjectsOnTheWindow(self, root):
         self.userLbl = Label(root, text="username").grid(row=0, column=0)
@@ -42,8 +43,10 @@ class WindowControl:
         userEncode = self.md.encodeMd5(user)
         passEncode = self.md.encodeMd5(password)
         if self.md.validate(userEncode) and self.md.validate(passEncode):
-            print('Validated')
-        else:
-            print('No')
+            ObjectsList = self.root.grid_slaves()
+            for i in ObjectsList:
+                i.destroy()
+            self._createSecondWindow()
 
-
+    def _createSecondWindow(self):
+        self.entryUser = Entry(self.root).grid(row=0)
