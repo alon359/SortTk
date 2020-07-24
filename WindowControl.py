@@ -12,7 +12,8 @@ class WindowControl:
         self.entryPass = None
         self.btnEnter = None
         self.root = None
-
+        self.input = None
+        self.lbl = None
         pass
 
     def createWindow(self, w, h):
@@ -49,4 +50,6 @@ class WindowControl:
             self._createSecondWindow()
 
     def _createSecondWindow(self):
-        self.entryUser = Entry(self.root).grid(row=0)
+        self.input = Entry(self.root, width=20).grid(row=0, column=1, columnspan=3, padx=10, pady=10)
+        self.lbl = Label(self.root, width=7).grid(row=0, column=0)
+        self.btnEnter = Button(self.root, text='Enter').grid(row=1, column=2)
