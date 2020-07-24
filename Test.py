@@ -7,6 +7,7 @@ def main():
     encrypt = EncryptData()
     root = WindowControl.createWindow(250, 200)
     WindowControl.putObjectsOnTheWindow(root)
+    encrypt.start()
     root.mainloop()
 
 

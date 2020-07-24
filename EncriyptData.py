@@ -1,16 +1,21 @@
 from cryptography.fernet import Fernet
 import xml.etree.ElementTree as ET
+import xml.dom.minidom as DOM
 
 
 class EncryptData:
+    countKey = 1
 
     def __init__(self):
         self.dataFile = open('Data.xml')
         self.tree = ET.parse(self.dataFile)
         self.root = self.tree.getroot()
         self.key = Fernet.generate_key()
+
+    def start(self):
         self.__saveKey(self.key)
-        pass
+
+        self.dataFile.close()
 
     def encrypt(self, data):
         pass
@@ -19,8 +24,14 @@ class EncryptData:
         pass
 
     def __saveKey(self, key):
-        self.root[1].text = str(self.key)
+        sub = ET.SubElement(self.root, 'Key')
+        count = self.root[0].text
+        x = int(count)
+        x = x+1
+        self.root[0].text = str(x)
+        sub.set('id', str(x))
+        sub.text = str(self.key)
         self.tree.write('Data.xml')
-        # self.dataFile.close()
-        print(self.root[0][0].tag)
+
+    def __reFormatXML(self):
         pass
