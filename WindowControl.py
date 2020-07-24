@@ -41,4 +41,9 @@ class WindowControl:
         password = self.entryPass.get()
         userEncode = self.md.encodeMd5(user)
         passEncode = self.md.encodeMd5(password)
+        if self.md.validate(userEncode) and self.md.validate(passEncode):
+            print('Validated')
+        else:
+            print('No')
+
 

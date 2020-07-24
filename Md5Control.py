@@ -10,5 +10,11 @@ class Md5Control:
         res = hashlib.md5(str(st).encode())
         return res.hexdigest()
 
-    def validator(self, mdstr):
-        pass
+    def validate(self, mdStr):
+
+        if mdStr == self.xmlControl.getUserNameFromXml():
+            return 'userOk'
+        elif mdStr == self.xmlControl.getPassFromXml():
+            return 'passOk'
+        else:
+            return False
