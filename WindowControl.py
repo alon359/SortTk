@@ -19,3 +19,11 @@ class WindowControl:
         root.geometry('%dx%d+%d+%d' % (rootWidth, rootHeight, xCoordinate, yCoordinate))
         return root
 
+    @staticmethod
+    def putObjectsOnTheWindow(root):
+        userLbl = Label(root, text="username").grid(row=0, column=0)
+        passLbl = Label(root, text="password").grid(row=1, column=0)
+        entryUser = Entry(root, width=20, borderwidth=5).grid(row=0, column=1, columnspan=3)
+        entryPass = Entry(root, width=20, borderwidth=5).grid(row=1, column=1)
+        btnEnter = Button(root, text='Enter').grid(row=2, column=1, columnspan=3)
+
