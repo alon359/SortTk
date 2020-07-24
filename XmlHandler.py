@@ -1,8 +1,10 @@
 import xml.etree.ElementTree as ET
+
+
 class XmlHandler:
 
     def __init__(self):
-        pass
+        self.tree = ET.parse('mdData')
+        self.root = self.tree.getroot()
 
-    def p(self):
-        print('s')
+
