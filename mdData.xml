@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Data>
-    <userName>7cf2db5ec261a0fa27a502d3196a6f60</userName>
-    <password>140d3ea2b0c7a720b8fcc236deedd04f</password>
+    <userName name="userName">7cf2db5ec261a0fa27a502d3196a6f60</userName>
+    <password name="password">140d3ea2b0c7a720b8fcc236deedd04f</password>
 </Data>
