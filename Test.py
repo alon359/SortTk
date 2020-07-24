@@ -1,13 +1,16 @@
 from EncriyptData import *
 from WindowControl import *
 from tkinter import *
+from Md5Control import *
+
 
 
 def main():
-    encrypt = EncryptData()
-    root = WindowControl.createWindow(250, 200)
-    WindowControl.putObjectsOnTheWindow(root)
-    encrypt.start()
+    # encrypt = EncryptData()
+    # encrypt.start()
+    window = WindowControl()
+    root = window.createWindow(250, 200)
+
     root.mainloop()
 
 

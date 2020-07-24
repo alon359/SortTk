@@ -1,5 +1,6 @@
 from cryptography.fernet import Fernet
 import xml.etree.ElementTree as ET
+import _md5
 import xml.dom.minidom as DOM
 
 
