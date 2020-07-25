@@ -65,4 +65,4 @@ class WindowControl:
         self.lbl2.pack()
 
     def _executeSort(self):
-        self.sortControl.putTestInNumbersList(self.input2.get())
+        numbersList = self.sortControl.putTestInNumbersList(self.input2.get())
