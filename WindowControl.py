@@ -1,11 +1,13 @@
 from tkinter import *
 from Md5Control import *
+from SortControl import *
 
 
 class WindowControl:
 
     def __init__(self):
         self.md = Md5Control()
+        self.sortControl = SortControl()
         self.userLbl = None
         self.passLbl = None
         self.entryUser = None
@@ -14,6 +16,9 @@ class WindowControl:
         self.root = None
         self.input = None
         self.lbl = None
+        self.input2 = None
+        self.btnEnter2 = None
+        self.lbl2 = None
         pass
 
     def createWindow(self, w, h):
@@ -46,10 +51,18 @@ class WindowControl:
         if self.md.validate(userEncode) and self.md.validate(passEncode):
             ObjectsList = self.root.grid_slaves()
             for i in ObjectsList:
-                i.destroy()
+                i.grid_forget()
             self._createSecondWindow()
 
     def _createSecondWindow(self):
-        self.input = Entry(self.root, width=20).grid(row=0, column=1, columnspan=3, padx=10, pady=10)
-        self.lbl = Label(self.root, width=7).grid(row=0, column=0)
-        self.btnEnter = Button(self.root, text='Enter').grid(row=1, column=2)
+        self.input2 = Entry(self.root, width=30, text='input2')
+        self.input2.pack()
+        print(type(self.input2))
+
+        self.btnEnter2 = Button(self.root, text='Enter', command=self._executeSort)
+        self.btnEnter2.pack()
+        self.lbl2 = Label(self.root, width=38, text='Please enter numbers separate by comma')
+        self.lbl2.pack()
+
+    def _executeSort(self):
+        self.sortControl.putTestInNumbersList(self.input2.get())
