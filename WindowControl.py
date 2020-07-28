@@ -4,7 +4,6 @@ from SortControl import *
 
 
 class WindowControl:
-
     def __init__(self):
         self.md = Md5Control()
         self.sortControl = SortControl()
@@ -19,10 +18,14 @@ class WindowControl:
         self.input2 = None
         self.btnEnter2 = None
         self.lbl2 = None
+        self.sortNumberList = None
+        self.lblResults = None
+        self.v = None
         pass
 
     def createWindow(self, w, h):
         self.root = Tk()
+        self.v = StringVar()
         self.root.title('Sorting')
         rootWidth = w
         rootHeight = h
@@ -57,12 +60,21 @@ class WindowControl:
     def _createSecondWindow(self):
         self.input2 = Entry(self.root, width=30, text='input2')
         self.input2.pack()
-        print(type(self.input2))
 
         self.btnEnter2 = Button(self.root, text='Enter', command=self._executeSort)
         self.btnEnter2.pack()
         self.lbl2 = Label(self.root, width=38, text='Please enter numbers separate by comma')
         self.lbl2.pack()
+        self.lblResults = Label(self.root, width=38, textvariable=self.v)
+        self.lblResults.pack()
+        self
 
     def _executeSort(self):
         numbersList = self.sortControl.putTestInNumbersList(self.input2.get())
+        self.sortNumberList = self.sortControl.quickSort(numbersList)
+        x = ''
+        for i in self.sortNumberList:
+            x += str(i)
+            if i is not self.sortNumberList[-1]:
+                x += ', '
+        self.v.set(x)
